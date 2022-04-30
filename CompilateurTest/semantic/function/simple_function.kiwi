@@ -1,0 +1,15 @@
+###10
+
+# Program 1
+Begin 
+    # Function1
+    word Sum()
+    {
+        return 5+5
+    }
+
+    word w=0
+    w = Sum()
+    print(w)
+
+End

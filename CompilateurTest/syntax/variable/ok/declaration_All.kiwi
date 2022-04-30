@@ -1,0 +1,24 @@
+# Program 1
+Begin 
+
+
+    # Variable déclaration
+    byte b1 = 0b00001111
+    word b2 = 0b0000111100001111
+
+    byte d1 = 10
+    word d2 = 512
+
+    string s1 = "Hello"
+    string s2 = "World"
+
+    byte h1 = 0xFA
+    word h2 = 0xFC10
+
+    const LF 13
+    const MIL 0x03E8
+    const hello " Hello World ! "
+
+    NOP
+
+End

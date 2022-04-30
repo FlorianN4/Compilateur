@@ -1,0 +1,10 @@
+###0
+###10
+
+# Program 
+Begin 
+
+    # instruction
+    print(5-5)
+    print(15-5)
+End

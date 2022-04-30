@@ -1,0 +1,14 @@
+# Program 1
+Begin 
+    # Function1
+    word Sum(byte a, byte b)
+    {
+        NOP
+        print(a+b)
+        return 5+5
+    }
+
+    word w=0
+    w = Sum(4, 5)
+
+End

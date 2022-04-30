@@ -1,0 +1,24 @@
+###69
+###25
+###50
+###5
+
+# Program 
+Begin 
+
+    # instruction
+    word w1
+    
+    w1 = 69
+    print(w1)
+
+    w1 = 5*5
+    print(w1)
+
+    w1 = w1*2
+    print(w1)
+
+    w1 = w1/2/5
+    print(w1)
+
+End

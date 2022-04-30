@@ -1,0 +1,7 @@
+# Program 1
+Begin 
+    print(128 >> 4)
+
+    print(0b11111111 & 0b11110000)
+
+End

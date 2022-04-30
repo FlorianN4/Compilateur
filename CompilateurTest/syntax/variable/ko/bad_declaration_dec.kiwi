@@ -1,0 +1,12 @@
+####ValueOverflowException
+# Program 1
+Begin 
+
+
+    # Variable déclaration
+    byte b1 = 257
+    word w1 = 71000
+
+    NOP
+
+End

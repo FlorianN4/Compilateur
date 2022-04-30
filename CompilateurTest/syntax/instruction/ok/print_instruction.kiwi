@@ -1,0 +1,12 @@
+# Program 1
+Begin 
+    # Variable déclaration
+    byte b = 0x69
+    word w = 0x12FF
+    string s = "message"
+
+    # print instruction
+    print(w)
+    print(s)
+
+End

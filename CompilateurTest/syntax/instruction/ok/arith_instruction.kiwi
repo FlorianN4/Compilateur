@@ -1,0 +1,11 @@
+# Program 1
+Begin 
+
+    # instruction
+    byte b
+    word w
+    w = b * b
+    b = 5
+    w++ 
+
+End

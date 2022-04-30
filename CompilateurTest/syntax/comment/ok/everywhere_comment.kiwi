@@ -1,0 +1,17 @@
+# Program 1
+Begin 
+    # Function1
+
+    #constante déclaration
+    byte b
+    # Variable déclaration
+    b = b + 69
+
+    # instruction
+    b = b + b
+
+    # print instruction
+    print(5+5)
+
+# End comment
+End

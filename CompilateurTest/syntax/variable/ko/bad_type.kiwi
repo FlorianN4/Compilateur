@@ -1,0 +1,13 @@
+
+# Program 1
+Begin 
+
+
+    # Variable déclaration
+    int i1
+    char c1
+    float f1
+
+    NOP
+
+End

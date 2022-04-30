@@ -1,0 +1,12 @@
+###10
+###10
+###10
+
+# Program 
+Begin 
+
+    # instruction
+    print(5+5)
+    print(0x05+0x05)
+    print(0b00000101+0b00000101)
+End

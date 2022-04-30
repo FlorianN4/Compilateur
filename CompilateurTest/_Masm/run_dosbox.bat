@@ -1,0 +1,1 @@
+"./DosBox/DOSBox.exe" -c "mount c 'D:\repos\Ecole\HEPL\Compilateur\CompilateurTest'"

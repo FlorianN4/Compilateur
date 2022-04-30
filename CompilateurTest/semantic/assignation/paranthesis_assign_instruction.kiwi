@@ -1,0 +1,16 @@
+###50
+###125
+
+# Program 
+Begin 
+
+    # instruction
+    word w1 = 50
+
+    w1 = (w1/2) * 2
+    print(w1)
+
+    w1 = (w1/2) + (w1*2)
+    print(w1)
+
+End

@@ -1,0 +1,12 @@
+####SymbolAlreadyDefinedException
+# Program 1
+Begin 
+
+
+    # Variable déclaration
+    byte i1
+    word i1
+
+    NOP
+
+End

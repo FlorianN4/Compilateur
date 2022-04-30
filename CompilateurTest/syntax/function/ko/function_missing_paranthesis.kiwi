@@ -1,0 +1,10 @@
+# Program 1
+Begin 
+    # Function1
+    word Sum(byte a, byte b)
+        return a+b
+    
+
+
+
+End

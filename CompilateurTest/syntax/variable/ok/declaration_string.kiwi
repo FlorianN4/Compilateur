@@ -1,0 +1,10 @@
+# Program 1
+Begin 
+
+    # Variable déclaration
+    string s1 = "Hello"
+    string s2 = "World"
+
+    NOP
+
+End

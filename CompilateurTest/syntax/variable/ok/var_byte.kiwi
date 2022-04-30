@@ -1,0 +1,11 @@
+# Program 1
+Begin 
+
+
+    # Variable déclaration
+    byte b1 = 0b11110000
+    word w1 = 0b1111000011110000
+
+    NOP
+
+End

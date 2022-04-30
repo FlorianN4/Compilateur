@@ -1,0 +1,10 @@
+# Program 1
+Begin 
+
+    const LF 13
+    const MIL 0x03E8
+    const hello " Hello World ! "
+
+    NOP
+
+End

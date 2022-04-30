@@ -1,0 +1,12 @@
+###69
+
+# Program 
+Begin 
+
+    # instruction
+    word w1
+    
+    w1 = 69
+    print(w1)
+
+End

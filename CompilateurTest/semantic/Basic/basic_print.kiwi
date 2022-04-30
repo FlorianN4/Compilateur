@@ -1,0 +1,5 @@
+﻿Begin
+	byte a
+	NOP
+	print(1)
+End

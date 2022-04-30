@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compilateur\Compilateur.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="generated\output\" />
+    <Folder Include="generated\semantic\" />
+    <Folder Include="generated\syntax\" />
+  </ItemGroup>
+
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="python &quot;$(ProjectDir)\generated\scripts\create_syntax.py&quot; &#xD;&#xA;python &quot;$(ProjectDir)\generated\scripts\create_semantics.py&quot;" />
+  </Target>
+  
+  <Target Name="BeforeClean">
+	  <ItemGroup>
+		  <DistDir Include="$(ProjectDir)\generated\output\semantic" />
+	  </ItemGroup>
+	  <Message Text="Deleting @(DistDir)" Importance="high" />
+	  <RemoveDir Directories="@(DistDir)" />
+	  <Exec Command="rmdirrmdir $(ProjectDir)\generated\output\semantic /S" />
+  </Target>
+
+</Project>

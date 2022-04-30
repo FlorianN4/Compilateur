@@ -1,0 +1,15 @@
+###110
+# Program 1
+Begin 
+    # Function1
+    word Soustraction(byte a, byte b, word c, word d, byte e)
+    {        
+        return a+b+c+d+e
+    }
+
+    word w=0
+    w = Soustraction(10, 5, 25, 30, 40)
+
+    print(w)
+
+End
