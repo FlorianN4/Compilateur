@@ -16,7 +16,7 @@ namespace Compilateur.Table
 
         Scope CurrentScope { get; set; }
 
-        Dictionary<String, Scope> Symbol { get; set; } //nom, type, scope
+        Dictionary<String, Scope> Symbol { get; set; } //nom, type, scope --> on ajouter ici que les scopes !!
 
         public SymboleTable()
         {
@@ -50,7 +50,7 @@ namespace Compilateur.Table
             Scope i = new Scope();
             if(Symbol.ContainsKey(nom))
             {
-                Symbol.Add(nom, i);
+                Symbol.Add(nom, i); //on met la valeur nom dans i
                 return i;
             }
             throw new NotFoundSymbolException();
@@ -58,7 +58,7 @@ namespace Compilateur.Table
 
         public void addVariable(BaseSymbole nom, Type type)
         {
-            CurrentScope.SymbolAdd(nom, type);
+            CurrentScope.SymbolAdd(nom, type); //--> on ajoute les variables aux scopes
         }
     }
 }

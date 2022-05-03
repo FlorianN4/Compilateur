@@ -15,12 +15,13 @@ namespace Compilateur
 
         public override void EnterVardecl(KIWIParser.VardeclContext context)
         {
-            this.SymbolTable.addVariable(new BaseSymbole(context.ID().GetText()), context.ID().GetType());
+            this.SymbolTable.addVariable(new BaseSymbole(context.ID().GetText()), context.ID().GetType()); //+ stocké la valeur de la variable
             base.EnterVardecl(context);
         }
 
         public override void EnterFctdecl([NotNull] KIWIParser.FctdeclContext context)
         {
+            this.SymbolTable.OpenScope(new Scope(context.ID().GetText(), context.ID().GetType()));
             base.EnterFctdecl(context);
         }
     }

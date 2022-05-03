@@ -9,7 +9,11 @@ namespace Compilateur.Table
     public class BaseSymbole
     {
         public BaseSymbole() {}
-        public BaseSymbole(String nom) {  Nom = nom; }
+        public BaseSymbole(String nom) //type = string, word, byte --> word et byte ? On trouve le type puis on le caste dans i, c ou string
+        {  
+            Nom = nom; 
+        } //on doit tester le type pour le trouver
+
         public Type Symbole { get ;  set; }
         public String Nom { get; set; }
        

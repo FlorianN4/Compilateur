@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Compilateur.Table
 {
-    class ConstVariable
+    public class ConstVariable
     {
     }
 }
