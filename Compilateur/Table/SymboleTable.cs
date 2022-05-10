@@ -56,9 +56,14 @@ namespace Compilateur.Table
             throw new NotFoundSymbolException();
         }
 
-        public void addVariable(BaseSymbole nom, Type type)
+        public void addVariable(BaseSymbole nom, KiwiType type)
         {
             CurrentScope.SymbolAdd(nom, type); //--> on ajoute les variables aux scopes
         }
+        public void addVariable(BaseSymbole nom)
+        {
+            CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
+        }
+
     }
 }

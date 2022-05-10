@@ -30,7 +30,7 @@ namespace Compilateur.Generator
 
         #region Constructor
 
-        public AssemblyPrinter(StringWriter writer)
+        public AssemblyPrinter(StringWriter writer) //ajouter au constructeur la table des symboles
         {
             this.writer = writer;
         }
@@ -57,12 +57,16 @@ namespace Compilateur.Generator
             this.writer.WriteLine(".MODEL SMALL");
             this.writer.WriteLine(".STACK 100H");
             this.writer.WriteLine(".DATA");
+            //ajouter les variables de la Table des symboles
+            //this.writer.WriteLine("MaVar DB 69")
             this.writer.WriteLine(".CODE");
             this.writer.WriteLine("MAIN PROC FAR");
             this.writer.WriteLine("    MOV AX,@DATA");
             this.writer.WriteLine("    MOV DS,AX");
 
             this.writer.WriteLine("");
+            //Initialiser les valeurs des variable (mov) --> faire un foreach
+            //this.writer.WriterLine("MOV [MaVar],69")
         }
 
         public void PrintMainEnd()

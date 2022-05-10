@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Compilateur.Table
 {
-    public class Variable
+    public class Variable : BaseSymbole
     {
+        public Variable(String nom, KiwiType type, String str) : base(nom, type, str)
+        {
+        }
     }
 }

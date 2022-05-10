@@ -25,7 +25,7 @@ namespace Compilateur.Table
         public String Nom { get; set; }
         public Type Type { get; set; }
 
-        public void SymbolAdd(BaseSymbole nouveau, Type type) // + ajouter la valeur
+        public void SymbolAdd(BaseSymbole nouveau, KiwiType type) // + ajouter la valeur
         {
             nouveau.Symbole = type;
             if(Variables.ContainsKey(nouveau.Nom))
@@ -33,7 +33,14 @@ namespace Compilateur.Table
                 Variables.Add(nouveau.Nom, nouveau);
             }
         }
-        
+        public void SymbolAdd(BaseSymbole nouveau) // + ajouter la valeur
+        {
+            if (Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+        }
+
 
     }
 }

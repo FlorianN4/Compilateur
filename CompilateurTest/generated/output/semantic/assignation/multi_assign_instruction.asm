@@ -1,0 +1,11 @@
+    ; print(w1)
+    CALL print_ax
+    ; 5*5
+    ; print(w1)
+    CALL print_ax
+    ; w1*2
+    ; print(w1)
+    CALL print_ax
+    ; w1/2/5
+    ; print(w1)
+    CALL print_ax

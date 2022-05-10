@@ -11,14 +11,14 @@ namespace Compilateur.Tests
     //
         [TestMethod()]
         public void testkiwi_language_begin_nop_end_ok(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ok\begin_nop_end.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ok\begin_nop_end.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ok\begin_nop_end.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ok\begin_nop_end.asm");
         }
 
         [TestMethod()]
         public void testkiwi_language_program1_ok(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ok\program1.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ok\program1.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ok\program1.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ok\program1.asm");
         }
 
     //
@@ -27,29 +27,29 @@ namespace Compilateur.Tests
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testkiwi_language_missing_begin_ko(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_begin.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_begin.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_begin.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_begin.asm");
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testkiwi_language_missing_begin2_ko(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_begin2.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_begin2.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_begin2.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_begin2.asm");
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testkiwi_language_missing_end_ko(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_end.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_end.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_end.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_end.asm");
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testkiwi_language_missing_end2_ko(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_end2.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_end2.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\kiwi_language\ko\missing_end2.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\kiwi_language\ko\missing_end2.asm");
         }
 
     }

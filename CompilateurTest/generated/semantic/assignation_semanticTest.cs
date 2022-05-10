@@ -14,8 +14,8 @@ namespace Compilateur.Tests
     //
         [TestMethod()]
         public void testassignation_assign_instruction(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\semantic\assignation\assign_instruction.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\semantic\assignation\assign_instruction.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\semantic\assignation\assign_instruction.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\semantic\assignation\assign_instruction.asm");
 
             var res = AssemblyRunner.Start(RootFolder, "assignation",  @"assign_instruction.asm", true);
             Assert.AreEqual("69", res, "Le résultat de sortie de l'assembleur n'est pas celui attentdu");
@@ -23,8 +23,8 @@ namespace Compilateur.Tests
 
         [TestMethod()]
         public void testassignation_complex_assign_instruction(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\semantic\assignation\complex_assign_instruction.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\semantic\assignation\complex_assign_instruction.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\semantic\assignation\complex_assign_instruction.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\semantic\assignation\complex_assign_instruction.asm");
 
             var res = AssemblyRunner.Start(RootFolder, "assignation",  @"complex_assign_instruction.asm", true);
             Assert.AreEqual("2555", res, "Le résultat de sortie de l'assembleur n'est pas celui attentdu");
@@ -32,8 +32,8 @@ namespace Compilateur.Tests
 
         [TestMethod()]
         public void testassignation_multi_assign_instruction(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\semantic\assignation\multi_assign_instruction.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\semantic\assignation\multi_assign_instruction.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\semantic\assignation\multi_assign_instruction.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\semantic\assignation\multi_assign_instruction.asm");
 
             var res = AssemblyRunner.Start(RootFolder, "assignation",  @"multi_assign_instruction.asm", true);
             Assert.AreEqual("6925505", res, "Le résultat de sortie de l'assembleur n'est pas celui attentdu");
@@ -41,8 +41,8 @@ namespace Compilateur.Tests
 
         [TestMethod()]
         public void testassignation_paranthesis_assign_instruction(){
-            Program.Compile(@"C:\compilateur\Compilateur\Compilateur\CompilateurTest\semantic\assignation\paranthesis_assign_instruction.kiwi", 
-                    @"C:\compilateur\Compilateur\Compilateur\CompilateurTest\generated\output\semantic\assignation\paranthesis_assign_instruction.asm");
+            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\semantic\assignation\paranthesis_assign_instruction.kiwi", 
+                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\semantic\assignation\paranthesis_assign_instruction.asm");
 
             var res = AssemblyRunner.Start(RootFolder, "assignation",  @"paranthesis_assign_instruction.asm", true);
             Assert.AreEqual("50125", res, "Le résultat de sortie de l'assembleur n'est pas celui attentdu");

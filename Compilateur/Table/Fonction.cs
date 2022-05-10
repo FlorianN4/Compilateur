@@ -6,23 +6,14 @@ using System.Threading.Tasks;
 
 namespace Compilateur.Table
 {
-    public class Fonction //utile ?? pcq scope est une fonction
+    public class Fonction : Scope
     {
         public Fonction()
         {
-
         }
 
-        public Fonction(String nom, Type type)
+        public Fonction(String nom, Type type) : base(nom, type)
         {
-            Nom = nom;
-            Type = type;
-            //tester le type pour savoir de quel type il s'agit puis mettre ce type dans Type
         }
-
-        String Nom { get; set; }
-
-        Type Type { get; set; }
-
     }
 }
