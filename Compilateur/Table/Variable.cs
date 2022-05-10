@@ -11,5 +11,9 @@ namespace Compilateur.Table
         public Variable(String nom, KiwiType type, String str) : base(nom, type, str)
         {
         }
+
+        public Variable(String nom, KiwiType type) : base(nom, type)
+        {
+        }
     }
 }

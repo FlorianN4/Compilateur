@@ -33,7 +33,7 @@ namespace Compilateur.Table
                 Variables.Add(nouveau.Nom, nouveau);
             }
         }
-        public void SymbolAdd(BaseSymbole nouveau) // + ajouter la valeur
+        public void SymbolAdd(Variable nouveau) // avant c'était BaseSymbole en paramètre
         {
             if (Variables.ContainsKey(nouveau.Nom))
             {
@@ -41,6 +41,20 @@ namespace Compilateur.Table
             }
         }
 
+        public void SymbolAdd(ParamVariable nouveau)
+        {
+            if (Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+        }
 
+        public void SymbolAdd(ConstVariable nouveau)
+        {
+            if (Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+        }
     }
 }

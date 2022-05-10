@@ -60,7 +60,16 @@ namespace Compilateur.Table
         {
             CurrentScope.SymbolAdd(nom, type); //--> on ajoute les variables aux scopes
         }
-        public void addVariable(BaseSymbole nom)
+        public void addVariable(Variable nom)
+        {
+            CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
+        }
+
+        public void addVariable(ParamVariable nom)
+        {
+            CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
+        }
+        public void addVariable(ConstVariable nom)
         {
             CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
         }

@@ -8,7 +8,7 @@ namespace Compilateur.Table
 {
     public class ConstVariable: BaseSymbole
     {
-        public ConstVariable(String nom, KiwiType type, String str) : base(nom, type, str)
+        public ConstVariable(String nom) 
         {
         }
     }
