@@ -80,7 +80,7 @@ namespace Compilateur
         public static string PrintAssemblyCode(KIWIParser.KiwiContext tree, SymboleTable symbolTable) 
         {
             var stream = new StringWriter();
-            var printer = new AssemblyPrinter(stream);
+            var printer = new AssemblyPrinter(stream, symbolTable);
             KiwiVisitor visitor = new KiwiVisitor(printer, symbolTable);
             tree.Accept(visitor);
             printer.Flush();

@@ -17,11 +17,11 @@ namespace Compilateur.Table
 
     public class BaseSymbole
     {
-        public BaseSymbole() {}
+        public BaseSymbole() { }
         public BaseSymbole(String nom) //type = string, word, byte --> word et byte ? 
-        {  
-            Nom = nom; 
-        } 
+        {
+            Nom = nom;
+        }
 
         public BaseSymbole(String nom, KiwiType type, String str)
         {
@@ -44,15 +44,15 @@ namespace Compilateur.Table
 
         public void TrouverType(String str) //fct pour les constantes 
         {
-            
-            if(Int32.TryParse(str, out int numValue))
+
+            if (Int32.TryParse(str, out int numValue))
             { //tester si c'est des bit, hexa ou string
-                if(str.StartsWith("0x"))
+                if (str.StartsWith("0x"))
                 {
                     //c'est hexa
                     if (numValue < ushort.MaxValue) ;
                 }
-                if(str.StartsWith("0b"))
+                if (str.StartsWith("0b"))
                 {
                     //c'est binaire
                     if (numValue < byte.MaxValue) ;
@@ -61,9 +61,9 @@ namespace Compilateur.Table
             //c'est string
         }
 
-        public KiwiType Symbole { get ;  set; }
+        public KiwiType Symbole { get; set; }
         public String Nom { get; set; }
-       
+
         public String Valeur { get; set; }
     }
 }

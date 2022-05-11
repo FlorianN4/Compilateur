@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Compilateur.Table;
 
 namespace Compilateur.Generator
 {
@@ -27,12 +28,16 @@ namespace Compilateur.Generator
     public class AssemblyPrinter
     {
         private TextWriter writer;
+        private SymboleTable myTable;
+
 
         #region Constructor
 
-        public AssemblyPrinter(StringWriter writer) //ajouter au constructeur la table des symboles
+        public AssemblyPrinter(StringWriter write, SymboleTable myTable) //ajouter au constructeur la table des symboles
         {
-            this.writer = writer;
+            this.writer = write;
+            this.myTable = myTable;
+            
         }
         public AssemblyPrinter(StreamWriter writer)
         {
@@ -58,6 +63,20 @@ namespace Compilateur.Generator
             this.writer.WriteLine(".STACK 100H");
             this.writer.WriteLine(".DATA");
             //ajouter les variables de la Table des symboles
+
+            foreach(var v in this.myTable.Symbol)
+            {
+                if(!(v.Value is ConstVariable))
+                    this.writer.WriteLine(v + " DW " + v.Value);
+            }
+
+            foreach (var v in this.myTable.Symbol)
+            {
+                if ((v.Value is ConstVariable))
+                    this.writer.WriteLine(v + " EQU " + v.Value);
+            }
+
+
             //this.writer.WriteLine("MaVar DB 69")
             this.writer.WriteLine(".CODE");
             this.writer.WriteLine("MAIN PROC FAR");
@@ -66,6 +85,11 @@ namespace Compilateur.Generator
 
             this.writer.WriteLine("");
             //Initialiser les valeurs des variable (mov) --> faire un foreach
+            foreach (var v in this.myTable.Symbol)
+            {
+                if (!(v.Value is ConstVariable))
+                    this.writer.WriteLine(" MOV["+v+"], " + v.Value);
+            }
             //this.writer.WriterLine("MOV [MaVar],69")
         }
 
@@ -88,6 +112,10 @@ namespace Compilateur.Generator
             this.writer.WriteLine("END MAIN");
         }
 
+        public void PrintPush(String registerLeft)
+        {
+            this.writer.WriteLine("    PUSH " + registerLeft);
+        }
 
         public void PrintMov(AssemblyRegister registerLeft, string b)
         {
@@ -95,8 +123,36 @@ namespace Compilateur.Generator
         }
 
         public void PrintAdd(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {            
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BX");
+            this.writer.WriteLine($"    ADD AX, BX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintSous(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
         {
-            this.writer.WriteLine($"    ADD {registerLeft}, {registerRight}");
+            this.writer.WriteLine($"    SUB {registerLeft}, {registerRight}");
+        }
+
+        public void PrintMul(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
+        { 
+            this.writer.WriteLine($"    MOV AL, {registerLeft}");
+            this.writer.WriteLine($"    MOV BL, {registerRight}");
+            this.writer.WriteLine($"    MUL BL");
+            this.writer.WriteLine($"    MOV {registerLeft}, AX");
+            this.writer.WriteLine($"    PUSH AX");
+            
+        }
+
+        public void PrintDiv(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
+        {
+            this.writer.WriteLine($"    MOV AX, {registerLeft}");
+            this.writer.WriteLine($"    MOV BL, {registerRight}");
+            this.writer.WriteLine($"    DIV BL");
+            this.writer.WriteLine($"    MOV {registerLeft}, AL"); //retenir les valeurs qlq part --> stack
+            this.writer.WriteLine($"    PUSH AL");
+            
         }
 
         public void PrintNop()

@@ -6,8 +6,7 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    ; NOP
-    NOP 
+    PUSH ffff
     ;interrupt to exit
     mov ah, 4ch
     int 21h

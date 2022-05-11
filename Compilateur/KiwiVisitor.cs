@@ -18,22 +18,21 @@ namespace Compilateur
         }
 
 
-        //public override string VisitKiwi(KIWIParser.KiwiContext context)
-        //{
-        //    this.Printer.PrintBegin();
+        public override string VisitKiwi(KIWIParser.KiwiContext context)
+        {
+            this.Printer.PrintBegin();
 
-        //    foreach (var instructionContext in context.instruction())
-        //    {
-        //        var left = this.Visit(instructionContext);
-        //    }
+            foreach (var instructionContext in context.instruction())
+            {
+                var left = this.Visit(instructionContext);
+            }
 
-        //    this.Printer.PrintMainEnd();
+            this.Printer.PrintMainEnd();
 
-        //    this.Printer.PrintEnd();
+            this.Printer.PrintEnd();
 
-        //    return string.Empty;
-        //}
-
+            return string.Empty;
+        }
         public override string VisitRightExprPLUSMIN([NotNull] KIWIParser.RightExprPLUSMINContext context)
         {
             return base.VisitRightExprPLUSMIN(context);
@@ -56,6 +55,7 @@ namespace Compilateur
         }
         public override string VisitRightExprID([NotNull] KIWIParser.RightExprIDContext context)
         {
+            Printer.PrintPush(context.GetText());
             return base.VisitRightExprID(context);
         }
         public override string VisitRightExprNOT([NotNull] KIWIParser.RightExprNOTContext context)
@@ -72,29 +72,32 @@ namespace Compilateur
         }
         public override string VisitRightExprPARAM([NotNull] KIWIParser.RightExprPARAMContext context)
         {
+            this.Printer.PrintComment(context.GetText());
+
             return base.VisitRightExprPARAM(context);
-        }
-        public override string VisitRightExprPLUSPLUSMINMIN([NotNull] KIWIParser.RightExprPLUSPLUSMINMINContext context)
-        {
-            return base.VisitRightExprPLUSPLUSMINMIN(context);
         }
         public override string VisitRightExprSHIFTDGRightExpr([NotNull] KIWIParser.RightExprSHIFTDGRightExprContext context)
         {
+            this.Printer.PrintComment(context.GetText());
+
             return base.VisitRightExprSHIFTDGRightExpr(context);
         }
         public override string VisitRightExprDIVMULMOD([NotNull] KIWIParser.RightExprDIVMULMODContext context)
         {
             this.Printer.PrintComment(context.GetText());
-            if (context.op.Type == KIWILexer.DIV)
-            {
-                //this.Printer.PrintDiv();
-            }
+            //type mod div ou mod ?
+            //if (context.op.Type == KIWILexer.DIV)
+            //{
+
+            //    this.Printer.PrintDiv();
+            //}
             //la même pour mul et mod
             return string.Empty;
         }
 
         public override string VisitInstNOP(KIWIParser.InstNOPContext context)
         {
+            this.Printer.PrintComment(context.GetText());
             this.Printer.PrintNop();
             return string.Empty;
         }

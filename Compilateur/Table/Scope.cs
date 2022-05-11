@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compilateur.Exception;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Compilateur.Table
             Nom = nom;
             Type = type;
         }
-        
+
         Dictionary<String, BaseSymbole> Variables { get; set; } //nom, type, scope
 
         public String Nom { get; set; }
@@ -28,19 +29,39 @@ namespace Compilateur.Table
         public void SymbolAdd(BaseSymbole nouveau, KiwiType type) // + ajouter la valeur
         {
             nouveau.Symbole = type;
-            if(Variables.ContainsKey(nouveau.Nom))
-            {
-                Variables.Add(nouveau.Nom, nouveau);
-            }
-        }
-        public void SymbolAdd(BaseSymbole nouveau) // + ajouter la valeur
-        {
             if (Variables.ContainsKey(nouveau.Nom))
             {
                 Variables.Add(nouveau.Nom, nouveau);
             }
         }
+        public void SymbolAdd(Variable nouveau) // avant c'était BaseSymbole en paramètre
+        {
+            if (!Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+            else
+                throw new SymbolAlreadyDefinedException("cpucpue");
+        }
 
+        public void SymbolAdd(ParamVariable nouveau)
+        {
+            if (!Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+            else
+                throw new SymbolAlreadyDefinedException("erreur");
+        }
 
+        public void SymbolAdd(ConstVariable nouveau)
+        {
+            if (!Variables.ContainsKey(nouveau.Nom))
+            {
+                Variables.Add(nouveau.Nom, nouveau);
+            }
+            else
+                throw new SymbolAlreadyDefinedException("erreur");
+        }
     }
 }

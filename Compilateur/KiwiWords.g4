@@ -2,7 +2,8 @@ lexer grammar KIWI;
 
 // Words
 PRINT: 'print';
-CONST: 'const';
+SOUS: 'Soustraction';
+SUM: 'Sum';
 RETURN: 'return';
 LPAR: '(';
 RPAR: ')';
@@ -31,27 +32,24 @@ TRUE: 'TRUE';
 FALSE: 'FALSE';
 NOP: 'NOP';
 
-TYPE: (BYTE | WORD | STRING);
 BYTE: 'byte';
 WORD: 'word';
 STRING: 'string';
-
+CONST: 'const';
 
 
 
 ID: LETTER (DIGIT | LETTER)*;
-ENTIER: (NUMBER | BIT8 | BIT16 | HEXA8 | HEXA16);
+//ENTIER: (NUMBER | BIT8 | BIT16 | HEXA8 | HEXA16);
 NUMBER: (DIGIT)+;
-HEXA8:'0x' HEXA HEXA;
-HEXA16:'0x' HEXA HEXA HEXA HEXA;
-BIT8:'0b' BIT BIT BIT BIT BIT BIT BIT BIT;
-BIT16:'0b' BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT;
+HEXA8:'0x'HEXA HEXA;
+HEXA16:'0x'HEXA HEXA HEXA HEXA;
+BIT8:'0b'BIT BIT BIT BIT BIT BIT BIT BIT;
+BIT16:'0b'BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT BIT;
 STRINGLITTERAL: '"' (.)*? '"';
-VARIABLE: TYPE ID;
-CONSTANTE: 'const ID (ENTIER | STRINGLITTERAL)';
 
 fragment DIGIT: [0-9] ;
-fragment SPECIAL: [. , ;];
+fragment SPECIAL: [.,;];
 fragment LETTER: [a-zA-Z];
 fragment BIT: [0-1];
 fragment HEXA: [0-9a-fA-F];

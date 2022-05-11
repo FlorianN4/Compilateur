@@ -16,12 +16,13 @@ namespace Compilateur.Table
 
         Scope CurrentScope { get; set; }
 
-        Dictionary<String, Scope> Symbol { get; set; } //nom, type, scope --> on ajouter ici que les scopes !!
+        public Dictionary<String, Scope> Symbol { get; set; } //nom, type, scope --> on ajouter ici que les scopes !!
 
         public SymboleTable()
         {
             MainScope = new Scope();
             CurrentScope = MainScope;
+            Symbol = new Dictionary<String, Scope>();
         }
         public void SymbolAdd()
         {
@@ -30,7 +31,7 @@ namespace Compilateur.Table
 
         public void OpenScope(Scope nouveau) //verifier que les fct n'ont pas le meme nom et ajouter le scope a la table des symboles (appel de symboladd)
         {
-            if(Symbol.ContainsKey(CurrentScope.Nom)) //fct exist dans dictionnaire
+            if (Symbol.ContainsKey(CurrentScope.Nom)) //fct exist dans dictionnaire
             {
                 if (CurrentScope.Nom.Equals(nouveau.Nom))
                     throw new SymbolAlreadyDefinedException();
@@ -48,7 +49,7 @@ namespace Compilateur.Table
         public Scope getSymbol(String nom)
         {//fonction dans dictionnaire qui permet d'avoir la valeur (scope) en utilisant la key (nom du scope)
             Scope i = new Scope();
-            if(Symbol.ContainsKey(nom))
+            if (Symbol.ContainsKey(nom))
             {
                 Symbol.Add(nom, i); //on met la valeur nom dans i
                 return i;
@@ -60,7 +61,16 @@ namespace Compilateur.Table
         {
             CurrentScope.SymbolAdd(nom, type); //--> on ajoute les variables aux scopes
         }
-        public void addVariable(BaseSymbole nom)
+        public void addVariable(Variable nom)
+        {
+            CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
+        }
+
+        public void addVariable(ParamVariable nom)
+        {
+            CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
+        }
+        public void addVariable(ConstVariable nom)
         {
             CurrentScope.SymbolAdd(nom); //--> on ajoute les variables aux scopes
         }
