@@ -1,6 +1,8 @@
 ﻿using Antlr4.Runtime.Misc;
 using System.Collections.Generic;
 using Compilateur.Table;
+using Compilateur.Exception;
+using System;
 
 namespace Compilateur
 {
@@ -36,8 +38,8 @@ namespace Compilateur
                 if (context.BIT8() != null)
                 {
                     value = context.BIT8().GetText();
-
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
+                    
                 }
                 if (context.BIT16() != null)
                 {

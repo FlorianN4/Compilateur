@@ -7,6 +7,11 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; print(5&1)
+    ; 5&1
+    POP AX
+    POP BX
+    AND AX, BX
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

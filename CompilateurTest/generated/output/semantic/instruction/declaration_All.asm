@@ -7,12 +7,18 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; print(b1+d1)
-    PUSH b1
-    PUSH d1
+    ; b1+d1
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
     CALL print_ax
     ; print(d2-d1)
-    PUSH d2
-    PUSH d1
+    ; d2-d1
+    POP BX
+    POP AX
+    SUB AX, BX
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

@@ -7,6 +7,27 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; b*b
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
+    CALL print_ax
+    ; b*b
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
+    CALL print_ax
+    ; w++
+    POP AX
+    INC AX
+    PUSH AX
     ;interrupt to exit
     mov ah, 4ch
     int 21h

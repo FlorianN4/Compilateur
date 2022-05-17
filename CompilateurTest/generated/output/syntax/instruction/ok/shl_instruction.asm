@@ -8,6 +8,9 @@ MAIN PROC FAR
 
     ; print(5<<1)
     ; 5<<1
+    POP AX
+    SHR AX, 1
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

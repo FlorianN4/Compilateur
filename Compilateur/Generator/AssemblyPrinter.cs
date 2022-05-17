@@ -123,36 +123,107 @@ namespace Compilateur.Generator
         }
 
         public void PrintAdd(AssemblyRegister registerLeft, AssemblyRegister registerRight)
-        {            
+        {
             this.writer.WriteLine($"    POP AX");
             this.writer.WriteLine($"    POP BX");
             this.writer.WriteLine($"    ADD AX, BX");
             this.writer.WriteLine($"    PUSH AX");
         }
 
+
+
         public void PrintSous(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
         {
+            this.writer.WriteLine($"    POP {registerRight}");
+            this.writer.WriteLine($"    POP {registerLeft}");
             this.writer.WriteLine($"    SUB {registerLeft}, {registerRight}");
+            this.writer.WriteLine($"    PUSH {registerLeft}");
         }
 
         public void PrintMul(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
-        { 
+        {
+            this.writer.WriteLine($"    POP {registerRight}");
+            this.writer.WriteLine($"    POP {registerLeft}");
             this.writer.WriteLine($"    MOV AL, {registerLeft}");
             this.writer.WriteLine($"    MOV BL, {registerRight}");
             this.writer.WriteLine($"    MUL BL");
             this.writer.WriteLine($"    MOV {registerLeft}, AX");
             this.writer.WriteLine($"    PUSH AX");
-            
+
         }
 
         public void PrintDiv(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
         {
-            this.writer.WriteLine($"    MOV AX, {registerLeft}");
-            this.writer.WriteLine($"    MOV BL, {registerRight}");
-            this.writer.WriteLine($"    DIV BL");
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BL");
+            this.writer.WriteLine($"    DIV BL"); //   AX / BL = AL
             this.writer.WriteLine($"    MOV {registerLeft}, AL"); //retenir les valeurs qlq part --> stack
             this.writer.WriteLine($"    PUSH AL");
-            
+        }
+
+        public void PrintMod(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
+        {
+            //d'abord on divise, puis on multiplie le résultat de la division parle diviseur
+            //on soustrait le dividende par le résultat de la multiplication
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BL"); //BL = diviseur
+            this.writer.WriteLine($"    MOV BX, AX");
+            this.writer.WriteLine($"    DIV BL"); // AX / BL = AL
+            this.writer.WriteLine($"    MUL BL"); //  AL x BL = AX
+            this.writer.WriteLine($"    SUB BX, AX");
+            this.writer.WriteLine($"    PUSH BX");
+        }
+
+        public void PrintXor(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BX");
+            this.writer.WriteLine($"    XOR AX, BX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintAnd(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BX");
+            this.writer.WriteLine($"    AND AX, BX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintOr(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BX");
+            this.writer.WriteLine($"    OR AX, BX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintInc(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    INC AX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintDec(AssemblyRegister registerLeft, AssemblyRegister registerRight)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    DEC AX");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintShiftd(AssemblyRegister registerLeft)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    SHR AX, 1");
+            this.writer.WriteLine($"    PUSH AX");
+        }
+
+        public void PrintShiftg(AssemblyRegister registerLeft)
+        {
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    SHL AX, 1");
+            this.writer.WriteLine($"    PUSH AX");
         }
 
         public void PrintNop()

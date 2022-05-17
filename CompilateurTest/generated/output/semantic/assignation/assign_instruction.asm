@@ -6,6 +6,7 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
+    CALL print_ax
     ; print(w1)
     PUSH w1
     CALL print_ax

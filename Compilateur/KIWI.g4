@@ -18,7 +18,7 @@ instruction: PRINT LPAR exprd RPAR          #InstPrint
 
 
 exprd: ID                                           #RightExprID
-    | (NUMBER | BINARY8 | BINARY16 | HEXA8 | HEXA16)          #RightExprENTIER
+    | (NUMBER | BIT8 | BIT16 | HEXA8 | HEXA16)          #RightExprENTIER
     | STRINGLITTERAL                                #RightExprSTRING
     | LPAR exprd RPAR                               #RightEpxrBetweenPAR
     | ID LPAR (exprd (COMMA exprd)*)? RPAR          #RightExprPARAM

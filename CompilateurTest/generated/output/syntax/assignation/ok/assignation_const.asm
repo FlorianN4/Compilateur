@@ -7,6 +7,8 @@ MAIN PROC FAR
     MOV DS,AX
 
     PUSH LF
+    CALL print_ax
+    PUSH LF
     ;interrupt to exit
     mov ah, 4ch
     int 21h

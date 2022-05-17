@@ -6,10 +6,34 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    PUSH b
-    PUSH b
-    PUSH b
+    ; b+69
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
+    CALL print_ax
+    ; b+69
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
+    ; b+b
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
+    CALL print_ax
+    ; b+b
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
     ; print(5+5)
+    ; 5+5
+    POP AX
+    POP BX
+    ADD AX, BX
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

@@ -6,18 +6,63 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
+    CALL print_ax
     ; print(w1)
     PUSH w1
     CALL print_ax
     ; 5*5
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
+    CALL print_ax
+    ; 5*5
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
     ; print(w1)
     PUSH w1
     CALL print_ax
     ; w1*2
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
+    CALL print_ax
+    ; w1*2
+    POP BX
+    POP AX
+    MOV AL, AX
+    MOV BL, BX
+    MUL BL
+    MOV AX, AX
+    PUSH AX
     ; print(w1)
     PUSH w1
     CALL print_ax
     ; w1/2/5
+    POP AX
+    POP BL
+    DIV BL
+    MOV AX, AL
+    PUSH AL
+    CALL print_ax
+    ; w1/2/5
+    POP AX
+    POP BL
+    DIV BL
+    MOV AX, AL
+    PUSH AL
     ; print(w1)
     PUSH w1
     CALL print_ax
