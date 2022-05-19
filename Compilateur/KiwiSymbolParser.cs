@@ -27,7 +27,8 @@ namespace Compilateur
                 t = KiwiType.STRING;
             if (context.EQUAL() == null)
                 this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t)); // pas de valeur à stocker la valeur de la variable
-         
+            else 
+            { 
 
                 if (context.NUMBER() != null)
                 {
@@ -39,14 +40,11 @@ namespace Compilateur
                 if (context.BIT8() != null)
                 {                   
                     value = context.BIT8().GetText();
-<<<<<<< HEAD
+
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                     
                 }
-=======
 
-
->>>>>>> 56b30970a389f763b4c6ca689096fb5cb08f27c8
                 if (context.BIT16() != null)
                 {
                     value = context.BIT16().GetText();
@@ -86,7 +84,6 @@ namespace Compilateur
         public override void EnterParamdecl([NotNull] KIWIParser.ParamdeclContext context)
         {
             string value;
-
             KiwiType t = KiwiType.INVALID;
             if (context.BYTE() != null)
                 t = KiwiType.BYTE;
@@ -99,10 +96,7 @@ namespace Compilateur
         public override void EnterConstdecl([NotNull] KIWIParser.ConstdeclContext context) //les constantes n'ont pas de type
         {
             string value;
-            if (context.STRING() != null)
-                t = KiwiType.STRING;
-            if (context.EQUAL() == null)
-                this.SymbolTable.addVariable(new ParamVariable(context.ID().GetText(), t)); // pas de valeur à stocker la valeur de la variable
+
             
                 //exception pour dire qu'une constante a toujours une valeur
             if (context.NUMBER() != null)
@@ -136,12 +130,6 @@ namespace Compilateur
                 this.SymbolTable.addVariable(new ConstVariable(context.ID().GetText(), value));
             }
                       
-        }
-       
-        public override void EnterConstdecl([NotNull] KIWIParser.ConstdeclContext context) //les constantes n'ont pas de type
-        {       
-            this.SymbolTable.addVariable(new ConstVariable(context.ID().GetText()));
-
         }
     }
 }

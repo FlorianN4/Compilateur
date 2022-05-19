@@ -8,7 +8,7 @@ namespace Compilateur.Table
 {
     public class ConstVariable : BaseSymbole
     {
-        public ConstVariable(String nom, String str) : base(nom, str)
+        public ConstVariable(String nom, String str) : base(nom, str) { }
 
         public ConstVariable(String nom) 
 
