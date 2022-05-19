@@ -46,12 +46,14 @@ namespace Compilateur.Table
 
         public void SymbolAdd(ParamVariable nouveau)
         {
+
             if (!Variables.ContainsKey(nouveau.Nom))
             {
                 Variables.Add(nouveau.Nom, nouveau);
             }
             else
                 throw new SymbolAlreadyDefinedException("erreur");
+
         }
 
         public void SymbolAdd(ConstVariable nouveau)
@@ -62,6 +64,7 @@ namespace Compilateur.Table
             }
             else
                 throw new SymbolAlreadyDefinedException("erreur");
+
         }
     }
 }
