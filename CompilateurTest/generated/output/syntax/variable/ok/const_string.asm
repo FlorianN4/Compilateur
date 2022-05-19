@@ -7,7 +7,9 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; print(hello)
-    PUSH hello
+    ; hello
+    MOV AX, " Hello World ! "
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

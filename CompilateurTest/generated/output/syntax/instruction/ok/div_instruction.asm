@@ -8,6 +8,10 @@ MAIN PROC FAR
 
     ; print(50/5)
     ; 50/5
+    MOV AX, 50
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
     POP BL
     DIV BL

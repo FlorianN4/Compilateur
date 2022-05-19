@@ -14,7 +14,7 @@ namespace Compilateur.Table
 
         Scope MainScope { get; set; } //le main scope est un scope
 
-        Scope CurrentScope { get; set; }
+        public Scope CurrentScope { get; set; }
 
         public Dictionary<String, Scope> Symbol { get; set; } //nom, type, scope --> on ajouter ici que les scopes !!
 

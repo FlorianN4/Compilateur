@@ -7,29 +7,49 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; b+69
+    MOV AX, 
+    PUSH AX
+    MOV AX, 69
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     CALL print_ax
     ; b+69
+    MOV AX, 
+    PUSH AX
+    MOV AX, 69
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     ; b+b
+    MOV AX, 
+    PUSH AX
+    MOV AX, 
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     CALL print_ax
     ; b+b
+    MOV AX, 
+    PUSH AX
+    MOV AX, 
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     ; print(5+5)
     ; 5+5
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX

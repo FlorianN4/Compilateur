@@ -8,22 +8,24 @@ MAIN PROC FAR
 
     ; print(5*5)
     ; 5*5
-    POP BX
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
-    MOV AL, AX
-    MOV BL, BX
-    MUL BL
-    MOV AX, AX
+    POP BX
+    MUL BX
     PUSH AX
     CALL print_ax
     ; print(1*5)
     ; 1*5
-    POP BX
+    MOV AX, 1
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
-    MOV AL, AX
-    MOV BL, BX
-    MUL BL
-    MOV AX, AX
+    POP BX
+    MUL BX
     PUSH AX
     CALL print_ax
     ;interrupt to exit

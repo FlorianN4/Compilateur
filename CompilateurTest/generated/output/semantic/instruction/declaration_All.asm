@@ -8,6 +8,10 @@ MAIN PROC FAR
 
     ; print(b1+d1)
     ; b1+d1
+    MOV AX, 0b00001111
+    PUSH AX
+    MOV AX, 10
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
@@ -15,6 +19,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(d2-d1)
     ; d2-d1
+    MOV AX, 512
+    PUSH AX
+    MOV AX, 10
+    PUSH AX
     POP BX
     POP AX
     SUB AX, BX

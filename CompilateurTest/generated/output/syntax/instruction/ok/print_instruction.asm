@@ -7,10 +7,14 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; print(w)
-    PUSH w
+    ; w
+    MOV AX, 0x12FF
+    PUSH AX
     CALL print_ax
     ; print(s)
-    PUSH s
+    ; s
+    MOV AX, "message"
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

@@ -8,6 +8,10 @@ MAIN PROC FAR
 
     ; print(b+0)
     ; b+0
+    MOV AX, 0
+    PUSH AX
+    MOV AX, 0
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
@@ -15,6 +19,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(100+b)
     ; 100+b
+    MOV AX, 100
+    PUSH AX
+    MOV AX, 0
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
@@ -22,6 +30,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(5+b)
     ; 5+b
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 0
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
@@ -29,6 +41,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(b2+10)
     ; b2+10
+    MOV AX, 10
+    PUSH AX
+    MOV AX, 10
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
@@ -36,6 +52,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(5+5)
     ; 5+5
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX

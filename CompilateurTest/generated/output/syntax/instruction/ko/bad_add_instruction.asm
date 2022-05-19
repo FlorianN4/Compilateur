@@ -8,6 +8,10 @@ MAIN PROC FAR
 
     ; print(5+5+a)
     ; 5+5+a
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX

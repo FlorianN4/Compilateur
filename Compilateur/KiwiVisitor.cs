@@ -2,6 +2,7 @@
 using Antlr4.Runtime.Misc;
 using Compilateur.Generator;
 using Compilateur.Table;
+using Compilateur.Exception;
 
 namespace Compilateur
 {
@@ -37,12 +38,23 @@ namespace Compilateur
         {
             this.Printer.PrintComment(context.GetText());
 
+            
+            //Printer.PrintPush(context.GetText());
+
             if (context.op.Type == KIWILexer.PLUS)
             {
+                    string[] parts = context.GetText().Split('+');
+
+                    Printer.PrintPush(parts[0]);
+                    Printer.PrintPush(parts[1]);
+                    
                 this.Printer.PrintAdd(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             if (context.op.Type == KIWILexer.MINUS)
             {
+                string[] parts = context.GetText().Split('-');
+                Printer.PrintPush(parts[0]);
+                Printer.PrintPush(parts[1]);
                 this.Printer.PrintSous(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             return string.Empty;
@@ -95,6 +107,26 @@ namespace Compilateur
         }
         public override string VisitRightExprID([NotNull] KIWIParser.RightExprIDContext context)
         {
+           
+            this.Printer.PrintComment(context.GetText());
+            /*    if (int.TryParse(context.GetText(), out int n))
+                {
+                    Printer.PrintPush(context.GetText());
+                    return base.VisitRightExprID(context);
+                }
+                foreach (var v in this.SymbolTable.CurrentScope.Variables)
+                {
+                    if (v.Key.Equals(context.GetText()))
+                    {
+                       string b  = v.Value.Valeur;
+                        Printer.PrintPush(b);
+                    }
+                    else
+                    {
+                        throw new NotFoundSymbolException("erreur : variable non declaree");
+                    }
+
+                }*/
             Printer.PrintPush(context.GetText());
             return base.VisitRightExprID(context);
         }
@@ -155,14 +187,23 @@ namespace Compilateur
             //type mod div ou mod ?
             if (context.op.Type == KIWILexer.DIV)
             {
+                string[] parts = context.GetText().Split('/');
+                Printer.PrintPush(parts[0]);
+                Printer.PrintPush(parts[1]);
                 this.Printer.PrintDiv(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             if (context.op.Type == KIWILexer.MUL)
             {
+                string[] parts = context.GetText().Split('*');
+                Printer.PrintPush(parts[0]);
+                Printer.PrintPush(parts[1]);
                 this.Printer.PrintMul(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             if (context.op.Type == KIWILexer.MODULO)
             {
+                string[] parts = context.GetText().Split('%');
+                Printer.PrintPush(parts[0]);
+                Printer.PrintPush(parts[1]);
                 this.Printer.PrintMod(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             return string.Empty;

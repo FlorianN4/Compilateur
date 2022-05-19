@@ -26,9 +26,9 @@ namespace Compilateur.Table
 
         public BaseSymbole(String nom, KiwiType type, String str)
         {
-            Nom = nom;
-            Symbole = type;
+            Nom = nom;       
             Valeur = str;
+            Symbole = type;
         }
 
         public BaseSymbole(String nom, KiwiType type)

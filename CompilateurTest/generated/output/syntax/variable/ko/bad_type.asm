@@ -6,12 +6,24 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    PUSH int
-    PUSH i1
-    PUSH char
-    PUSH c1
-    PUSH float
-    PUSH f1
+    ; int
+    MOV AX, int
+    PUSH AX
+    ; i1
+    MOV AX, i1
+    PUSH AX
+    ; char
+    MOV AX, char
+    PUSH AX
+    ; c1
+    MOV AX, c1
+    PUSH AX
+    ; float
+    MOV AX, float
+    PUSH AX
+    ; f1
+    MOV AX, f1
+    PUSH AX
     ; NOP
     NOP 
     ;interrupt to exit

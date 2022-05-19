@@ -8,6 +8,10 @@ MAIN PROC FAR
 
     ; print(5-5)
     ; 5-5
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP BX
     POP AX
     SUB AX, BX
@@ -15,6 +19,10 @@ MAIN PROC FAR
     CALL print_ax
     ; print(15-5)
     ; 15-5
+    MOV AX, 15
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
     POP BX
     POP AX
     SUB AX, BX

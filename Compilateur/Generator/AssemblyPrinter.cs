@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Compilateur.Table;
+using Compilateur.Exception;
 
 namespace Compilateur.Generator
 {
@@ -114,12 +115,45 @@ namespace Compilateur.Generator
 
         public void PrintPush(String registerLeft)
         {
-            this.writer.WriteLine("    PUSH " + registerLeft);
+            PrintMov(AssemblyRegister.AX, registerLeft);
+            this.writer.WriteLine("    PUSH AX");
         }
 
         public void PrintMov(AssemblyRegister registerLeft, string b)
         {
-            this.writer.WriteLine("    MOV " + registerLeft + "," + b);
+            foreach (var v in this.myTable.CurrentScope.Variables)
+            {
+                if (v.Key == b)
+                {
+                    b = v.Value.Valeur;
+                    this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                    return;
+                }
+
+            }
+            if (b.StartsWith("0b"))
+            {
+                b += "b";
+                b = b.Remove(0, 2);
+                this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                return;
+            }
+            if (b.StartsWith("0x"))
+            {
+                b += "h";
+                b = b.Remove(0, 2);
+                this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                return;
+            }
+            if (int.TryParse(b, out int n))
+            {
+                this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                return;
+            }
+
+             throw new NotFoundSymbolException("erreur : variable non declaree");//revoir l'exception bloque dosbox avec les return
+            
+
         }
 
         public void PrintAdd(AssemblyRegister registerLeft, AssemblyRegister registerRight)
@@ -129,8 +163,6 @@ namespace Compilateur.Generator
             this.writer.WriteLine($"    ADD AX, BX");
             this.writer.WriteLine($"    PUSH AX");
         }
-
-
 
         public void PrintSous(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
         {
@@ -142,12 +174,9 @@ namespace Compilateur.Generator
 
         public void PrintMul(AssemblyRegister registerLeft, AssemblyRegister registerRight) //nouveau
         {
-            this.writer.WriteLine($"    POP {registerRight}");
-            this.writer.WriteLine($"    POP {registerLeft}");
-            this.writer.WriteLine($"    MOV AL, {registerLeft}");
-            this.writer.WriteLine($"    MOV BL, {registerRight}");
-            this.writer.WriteLine($"    MUL BL");
-            this.writer.WriteLine($"    MOV {registerLeft}, AX");
+            this.writer.WriteLine($"    POP AX");
+            this.writer.WriteLine($"    POP BX");
+            this.writer.WriteLine($"    MUL BX");
             this.writer.WriteLine($"    PUSH AX");
 
         }

@@ -32,11 +32,12 @@ namespace Compilateur
                 if (context.NUMBER() != null)
                 {
                     value = context.NUMBER().GetText();
-
+                    if (Int32.Parse(value) > 65536)//// revoir l'exception 
+                        throw new OverflowException("erreur : overflow");
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
                 if (context.BIT8() != null)
-                {
+                {                   
                     value = context.BIT8().GetText();
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                     

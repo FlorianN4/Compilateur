@@ -7,38 +7,48 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; (w1/2)*2
-    POP BX
+    MOV AX, (w1/2)
+    PUSH AX
+    PUSH AX
     POP AX
-    MOV AL, AX
-    MOV BL, BX
-    MUL BL
-    MOV AX, AX
+    POP BX
+    MUL BX
     PUSH AX
     CALL print_ax
     ; (w1/2)*2
-    POP BX
+    MOV AX, (w1/2)
+    PUSH AX
+    PUSH AX
     POP AX
-    MOV AL, AX
-    MOV BL, BX
-    MUL BL
-    MOV AX, AX
+    POP BX
+    MUL BX
     PUSH AX
     ; print(w1)
-    PUSH w1
+    ; w1
+    PUSH AX
     CALL print_ax
     ; (w1/2)+(w1*2)
+    MOV AX, (w1/2)
+    PUSH AX
+    MOV AX, (w1*2)
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     CALL print_ax
     ; (w1/2)+(w1*2)
+    MOV AX, (w1/2)
+    PUSH AX
+    MOV AX, (w1*2)
+    PUSH AX
     POP AX
     POP BX
     ADD AX, BX
     PUSH AX
     ; print(w1)
-    PUSH w1
+    ; w1
+    PUSH AX
     CALL print_ax
     ;interrupt to exit
     mov ah, 4ch

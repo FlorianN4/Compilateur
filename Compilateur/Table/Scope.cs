@@ -21,7 +21,7 @@ namespace Compilateur.Table
             Type = type;
         }
 
-        Dictionary<String, BaseSymbole> Variables { get; set; } //nom, type, scope
+        public Dictionary<String, BaseSymbole> Variables { get; set; } //nom, type, scope
 
         public String Nom { get; set; }
         public Type Type { get; set; }
