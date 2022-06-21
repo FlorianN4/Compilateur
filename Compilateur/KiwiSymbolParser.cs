@@ -33,14 +33,15 @@ namespace Compilateur
                 if (context.NUMBER() != null)
                 {
                     value = context.NUMBER().GetText();
-                    if (Int32.Parse(value) > 65536)//// revoir l'exception 
-                        throw new OverflowException("erreur : overflow");
+                    if (Int32.Parse(value) > 65536)
+                        throw new ValueOverflowException("erreur : overflow");
+                    if(t == KiwiType.BYTE && Int32.Parse(value) > 256)
+                        throw new ValueOverflowException("erreur : overflow");
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
                 if (context.BIT8() != null)
                 {                   
                     value = context.BIT8().GetText();
-
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                     
                 }
@@ -50,14 +51,19 @@ namespace Compilateur
                     value = context.BIT16().GetText();
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
-                if (context.HEXA8() != null)
+                if (context.HEXA16() != null && t == KiwiType.BYTE)
                 {
-                    value = context.HEXA8().GetText();
+                    if (context.HEXA16().GetText().Length > 4)
+                        throw new ParsingException("erreur");
+                    value = context.HEXA8().GetText();                    
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
-                if (context.HEXA16() != null)
+                if (context.HEXA16() != null && t == KiwiType.WORD)
                 {
+                    if (context.HEXA16().GetText().Length > 6)
+                        throw new ParsingException("erreur");
                     value = context.HEXA16().GetText();
+                    
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
                 if (context.STRINGLITTERAL() != null)
@@ -66,6 +72,7 @@ namespace Compilateur
                     this.SymbolTable.addVariable(new Variable(context.ID().GetText(), t, value));
                 }
             }
+            //SymbolTable.CurrentScope.Variables.ContainsKey("w1");
             base.EnterVardecl(context);
         }
 
@@ -128,8 +135,8 @@ namespace Compilateur
             {
                 value = context.STRINGLITTERAL().GetText();
                 this.SymbolTable.addVariable(new ConstVariable(context.ID().GetText(), value));
-            }
-                      
+            }                     
         }
+
     }
 }

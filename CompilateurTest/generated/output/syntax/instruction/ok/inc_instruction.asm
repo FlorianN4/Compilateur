@@ -6,7 +6,7 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    CALL print_ax
+    MOV AX, 5
     ; b++
     POP AX
     INC AX

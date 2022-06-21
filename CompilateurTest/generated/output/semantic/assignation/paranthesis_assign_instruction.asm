@@ -9,6 +9,7 @@ MAIN PROC FAR
     ; (w1/2)*2
     MOV AX, (w1/2)
     PUSH AX
+    MOV AX, 2
     PUSH AX
     POP AX
     POP BX
@@ -18,6 +19,7 @@ MAIN PROC FAR
     ; (w1/2)*2
     MOV AX, (w1/2)
     PUSH AX
+    MOV AX, 2
     PUSH AX
     POP AX
     POP BX
@@ -25,6 +27,7 @@ MAIN PROC FAR
     PUSH AX
     ; print(w1)
     ; w1
+    MOV AX, w1
     PUSH AX
     CALL print_ax
     ; (w1/2)+(w1*2)
@@ -48,6 +51,7 @@ MAIN PROC FAR
     PUSH AX
     ; print(w1)
     ; w1
+    MOV AX, w1
     PUSH AX
     CALL print_ax
     ;interrupt to exit

@@ -7,9 +7,14 @@ MAIN PROC FAR
     MOV DS,AX
 
     ; b*b
-    MOV AX, 
     PUSH AX
-    MOV AX, 
+    PUSH AX
+    POP AX
+    POP BX
+    MUL BX
+    PUSH AX
+    ; b*b
+    PUSH AX
     PUSH AX
     POP AX
     POP BX
@@ -17,15 +22,13 @@ MAIN PROC FAR
     PUSH AX
     CALL print_ax
     ; b*b
-    MOV AX, 
     PUSH AX
-    MOV AX, 
     PUSH AX
     POP AX
     POP BX
     MUL BX
     PUSH AX
-    CALL print_ax
+    MOV AX, 5
     ; w++
     POP AX
     INC AX

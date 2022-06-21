@@ -6,10 +6,10 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    CALL print_ax
+    MOV AX, 69
     ; print(w1)
     ; w1
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     CALL print_ax
     ;interrupt to exit

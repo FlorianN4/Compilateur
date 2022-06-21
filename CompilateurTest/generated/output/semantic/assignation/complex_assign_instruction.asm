@@ -14,7 +14,15 @@ MAIN PROC FAR
     POP AX
     POP BL
     DIV BL
-    MOV AX, AL
+    PUSH AL
+    ; w1/2
+    MOV AX, 50
+    PUSH AX
+    MOV AX, 2
+    PUSH AX
+    POP AX
+    POP BL
+    DIV BL
     PUSH AL
     CALL print_ax
     ; w1/2
@@ -25,30 +33,7 @@ MAIN PROC FAR
     POP AX
     POP BL
     DIV BL
-    MOV AX, AL
     PUSH AL
-    ; print(w1)
-    ; w1
-    MOV AX, 50
-    PUSH AX
-    CALL print_ax
-    ; w1*2+5
-    PUSH AX
-    MOV AX, 5
-    PUSH AX
-    POP AX
-    POP BX
-    ADD AX, BX
-    PUSH AX
-    CALL print_ax
-    ; w1*2+5
-    PUSH AX
-    MOV AX, 5
-    PUSH AX
-    POP AX
-    POP BX
-    ADD AX, BX
-    PUSH AX
     ; print(w1)
     ; w1
     MOV AX, 50

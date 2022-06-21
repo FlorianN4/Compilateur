@@ -6,7 +6,7 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    CALL print_ax
+    MOV AX, 69
     ;interrupt to exit
     mov ah, 4ch
     int 21h

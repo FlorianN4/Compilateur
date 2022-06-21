@@ -9,6 +9,9 @@ MAIN PROC FAR
     ; LF
     MOV AX, 13
     PUSH AX
+    ; LF
+    MOV AX, 13
+    PUSH AX
     CALL print_ax
     ; LF
     MOV AX, 13

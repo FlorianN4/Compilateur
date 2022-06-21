@@ -6,12 +6,21 @@ MAIN PROC FAR
     MOV AX,@DATA
     MOV DS,AX
 
-    CALL print_ax
+    MOV AX, 69
     ; print(w1)
     ; w1
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     CALL print_ax
+    ; 5*5
+    MOV AX, 5
+    PUSH AX
+    MOV AX, 5
+    PUSH AX
+    POP AX
+    POP BX
+    MUL BX
+    PUSH AX
     ; 5*5
     MOV AX, 5
     PUSH AX
@@ -33,11 +42,20 @@ MAIN PROC FAR
     PUSH AX
     ; print(w1)
     ; w1
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     CALL print_ax
     ; w1*2
-    MOV AX, 
+    MOV AX, 69
+    PUSH AX
+    MOV AX, 2
+    PUSH AX
+    POP AX
+    POP BX
+    MUL BX
+    PUSH AX
+    ; w1*2
+    MOV AX, 69
     PUSH AX
     MOV AX, 2
     PUSH AX
@@ -47,7 +65,7 @@ MAIN PROC FAR
     PUSH AX
     CALL print_ax
     ; w1*2
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     MOV AX, 2
     PUSH AX
@@ -57,33 +75,40 @@ MAIN PROC FAR
     PUSH AX
     ; print(w1)
     ; w1
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     CALL print_ax
     ; w1/2/5
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     MOV AX, 2
     PUSH AX
     POP AX
     POP BL
     DIV BL
-    MOV AX, AL
+    PUSH AL
+    ; w1/2/5
+    MOV AX, 69
+    PUSH AX
+    MOV AX, 2
+    PUSH AX
+    POP AX
+    POP BL
+    DIV BL
     PUSH AL
     CALL print_ax
     ; w1/2/5
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     MOV AX, 2
     PUSH AX
     POP AX
     POP BL
     DIV BL
-    MOV AX, AL
     PUSH AL
     ; print(w1)
     ; w1
-    MOV AX, 
+    MOV AX, 69
     PUSH AX
     CALL print_ax
     ;interrupt to exit

@@ -15,7 +15,6 @@ MAIN PROC FAR
     POP AX
     POP BL
     DIV BL
-    MOV AX, AL
     PUSH AL
     CALL print_ax
     ;interrupt to exit

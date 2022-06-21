@@ -11,26 +11,26 @@ namespace Compilateur.Tests
     //
         [TestMethod()]
         public void testassignation_assignation_bin_ok(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_bin.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_bin.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_bin.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_bin.asm");
         }
 
         [TestMethod()]
         public void testassignation_assignation_const_ok(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_const.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_const.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_const.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_const.asm");
         }
 
         [TestMethod()]
         public void testassignation_assignation_dec_ok(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_dec.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_dec.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_dec.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_dec.asm");
         }
 
         [TestMethod()]
         public void testassignation_assignation_hex_ok(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_hex.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_hex.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ok\assignation_hex.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ok\assignation_hex.asm");
         }
 
     //
@@ -39,22 +39,22 @@ namespace Compilateur.Tests
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testassignation_bad_assignation_bin_ko(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_bin.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_bin.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_bin.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_bin.asm");
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ValueOverflowException))]
         public void testassignation_bad_assignation_dec_ko(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_dec.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_dec.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_dec.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_dec.asm");
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ParsingException))]
         public void testassignation_bad_assignation_hex_ko(){
-            Program.Compile(@"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_hex.kiwi", 
-                    @"C:\Users\flori\Desktop\Bac3 Q2\Micro Pro & Electro Sys\Micropro\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_hex.asm");
+            Program.Compile(@"C:\compilateur\compilateur4\Compilateur\CompilateurTest\syntax\assignation\ko\bad_assignation_hex.kiwi", 
+                    @"C:\compilateur\compilateur4\Compilateur\CompilateurTest\generated\output\syntax\assignation\ko\bad_assignation_hex.asm");
         }
 
     }

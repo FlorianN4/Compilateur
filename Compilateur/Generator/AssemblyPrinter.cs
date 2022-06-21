@@ -126,20 +126,25 @@ namespace Compilateur.Generator
                 if (v.Key == b)
                 {
                     b = v.Value.Valeur;
-                    this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                    if(v.Value.Valeur != null)
+                         this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
                     return;
                 }
 
             }
+            
             if (b.StartsWith("0b"))
             {
+                
                 b += "b";
                 b = b.Remove(0, 2);
+                
                 this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+                
                 return;
             }
             if (b.StartsWith("0x"))
-            {
+            {             
                 b += "h";
                 b = b.Remove(0, 2);
                 this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
@@ -148,11 +153,11 @@ namespace Compilateur.Generator
             if (int.TryParse(b, out int n))
             {
                 this.writer.WriteLine("    MOV " + registerLeft + ", " + b);
+
                 return;
             }
 
-             throw new NotFoundSymbolException("erreur : variable non declaree");//revoir l'exception bloque dosbox avec les return
-            
+            throw new ParsingException("erreur");
 
         }
 
@@ -186,7 +191,7 @@ namespace Compilateur.Generator
             this.writer.WriteLine($"    POP AX");
             this.writer.WriteLine($"    POP BL");
             this.writer.WriteLine($"    DIV BL"); //   AX / BL = AL
-            this.writer.WriteLine($"    MOV {registerLeft}, AL"); //retenir les valeurs qlq part --> stack
+         //   this.writer.WriteLine($"    MOV {registerLeft}, AL"); //retenir les valeurs qlq part --> stack
             this.writer.WriteLine($"    PUSH AL");
         }
 

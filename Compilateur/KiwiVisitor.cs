@@ -47,7 +47,16 @@ namespace Compilateur
 
                     Printer.PrintPush(parts[0]);
                     Printer.PrintPush(parts[1]);
-                    
+              /*  for (int i = 0; i < parts.Length; i++)
+                {
+                    if (int.TryParse(parts[i], out int n))
+                        Printer.PrintPush(parts[i]);
+                    else
+                    {
+                        throw new NotFoundSymbolException("Error Sum ");
+                    }
+                }
+                */
                 this.Printer.PrintAdd(AssemblyRegister.AX, AssemblyRegister.BX);
             }
             if (context.op.Type == KIWILexer.MINUS)
@@ -57,6 +66,8 @@ namespace Compilateur
                 Printer.PrintPush(parts[1]);
                 this.Printer.PrintSous(AssemblyRegister.AX, AssemblyRegister.BX);
             }
+            if(context.op.Type != KIWILexer.MINUS && context.op.Type != KIWILexer.PLUS) { throw new NotFoundSymbolException("Error Sum "); }
+            //throw new NotFoundSymbolException("Error Sum ");
             return string.Empty;
         }
 
@@ -136,11 +147,38 @@ namespace Compilateur
         }
         public override string VisitInstLeftEqualRight([NotNull] KIWIParser.InstLeftEqualRightContext context)
         {
-            var right = this.Visit(context.exprd());
-            if (!string.IsNullOrWhiteSpace(right))
-                this.Printer.PrintMov(AssemblyRegister.AX, right);
-            this.Printer.PrintCallPrintAX();
+            /*  var right = this.Visit(context.exprd());
+              string essai = context.GetText();
 
+              context.exprg();
+              if (!string.IsNullOrWhiteSpace(right))
+                  this.Printer.PrintMov(AssemblyRegister.AX, right);
+              this.Printer.PrintCallPrintAX();
+              */
+
+            var right = this.Visit(context.exprd());
+            string[] var = context.GetText().Split("=");
+
+            if (int.TryParse(var[1], out int n))
+            {
+                if (SymbolTable.CurrentScope.Variables.ContainsKey(var[0]))
+                    SymbolTable.CurrentScope.Variables[var[0]] = new Variable(var[0], KiwiType.WORD, var[1]);
+                right = SymbolTable.CurrentScope.Variables[var[0]].Valeur;
+                context.exprg();
+                if (!string.IsNullOrWhiteSpace(right))
+                    this.Printer.PrintMov(AssemblyRegister.AX, right);
+                //   this.Printer.PrintCallPrintAX();*/
+            }
+            else
+            {
+                right = this.Visit(context.exprd());
+                string essai = context.GetText();
+
+                context.exprg();
+                if (!string.IsNullOrWhiteSpace(right))
+                    this.Printer.PrintMov(AssemblyRegister.AX, right);
+                this.Printer.PrintCallPrintAX();
+            }
             return base.VisitInstLeftEqualRight(context);
         }
         public override string VisitRightExprORANDXORRightExpr([NotNull] KIWIParser.RightExprORANDXORRightExprContext context)
@@ -188,6 +226,8 @@ namespace Compilateur
             if (context.op.Type == KIWILexer.DIV)
             {
                 string[] parts = context.GetText().Split('/');
+                parts[0] = nombreOuVar(parts[0]);
+                parts[1] = nombreOuVar(parts[1]);
                 Printer.PrintPush(parts[0]);
                 Printer.PrintPush(parts[1]);
                 this.Printer.PrintDiv(AssemblyRegister.AX, AssemblyRegister.BX);
@@ -226,6 +266,16 @@ namespace Compilateur
 
             this.Printer.PrintCallPrintAX();
             return string.Empty;
+        }
+
+        public string nombreOuVar(string nbr)
+        {
+            if(int.TryParse(nbr, out int n))
+                return nbr;
+
+            if (SymbolTable.CurrentScope.Variables.ContainsKey(nbr))
+                return SymbolTable.CurrentScope.Variables[nbr].Valeur;
+            return nbr;
         }
 
     }

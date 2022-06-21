@@ -10,7 +10,6 @@ Begin
     w1 = w1/2
     print(w1)
 
-    w1 = w1*2+5
-    print(w1)
+    
 
 End
